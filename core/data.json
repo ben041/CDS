@@ -1,0 +1,33 @@
+{
+    "cholera": {
+        "symptoms": ["diarrhea", "vomiting", "dehydration", "abdominal pain", "fever"],
+        "description": "Cholera is an infectious disease that causes severe watery diarrhea, which can lead to dehydration and even death if not treated promptly.",
+        "prevention": "Cholera can be prevented by practicing good hygiene and avoiding contaminated food and water sources.",
+        "treatment": "Treatment involves rehydration with oral rehydration solution (ORS) or intravenous fluids and antibiotics in severe cases."
+    },
+    "malaria": {
+        "symptoms": ["fever", "chills", "sweating", "headache", "muscle aches"],
+        "description": "Malaria is a mosquito-borne disease caused by a parasite. It leads to recurrent fever, chills, and other flu-like symptoms.",
+        "prevention": "Preventing malaria involves using insect repellents, bed nets, and taking antimalarial medications when traveling to endemic areas.",
+        "treatment": "Malaria is treated with antimalarial drugs, and the choice of drug depends on the type of malaria and its severity."
+    },
+    "influenza": {
+        "symptoms": ["fever", "cough", "sore throat", "runny nose", "body aches"],
+        "description": "Influenza, or the flu, is a contagious respiratory illness caused by influenza viruses. It can cause mild to severe symptoms.",
+        "prevention": "Flu can be prevented by getting an annual flu vaccine and practicing good respiratory hygiene.",
+        "treatment": "Treatment may involve antiviral medications, rest, and staying hydrated."
+    },
+    "pneumonia": {
+        "symptoms": ["cough with mucus", "shortness of breath", "chest pain", "fatigue"],
+        "description": "Pneumonia is an inflammatory condition of the lung affecting the air sacs. It can be caused by bacteria, viruses, or other microorganisms.",
+        "prevention": "Preventing pneumonia includes vaccination against certain bacteria and viruses, good hygiene, and not smoking.",
+        "treatment": "Treatment depends on the cause and may involve antibiotics, antiviral drugs, or supportive care."
+    },
+    "diabetes": {
+        "symptoms": ["frequent urination", "excessive thirst", "unexplained weight loss", "fatigue", "blurred vision"],
+        "description": "Diabetes is a chronic condition that affects how your body processes glucose, leading to high blood sugar levels.",
+        "prevention": "Preventing diabetes involves maintaining a healthy diet, regular physical activity, and managing weight.",
+        "treatment": "Treatment may include medication, insulin therapy, and lifestyle changes."
+    }
+    
+}

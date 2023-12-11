@@ -1,0 +1,109 @@
+{% load static %}
+{% include 'header.html' %}
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+{% include 'nav.html' %}
+
+
+<style>
+    .header {
+        background: url(static/assets/imgs/osha-jcaho-hipaa-1024x683.jpg);
+        position: relative;
+        height: 100vh;
+        min-height: 500px;
+        background-size: cover;
+        /* overflow: hidden; */
+    }
+</style>
+
+   <style>
+    .cont{
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+   </style>
+    <section  id="service" class="section pt-0">
+        <div class="cont">
+            <h6 class="section-title text-center">.</h6>
+            <h6 class="section-subtitle text-center mb-5 pb-3">.</h6>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <small class="text-primary font-weight-bold">RESULT TABLE</small>
+                            {% if predicted_disease %}
+                            
+                            <table>
+                                <tr>
+                                  
+                                    <th>NAME</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>TREATMENT</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>{{ predicted_disease }}</td>
+                                    <td>{{ description }}</td>
+                                    <td>{{ treatment_suggestions }}</td>
+                                    </tr>
+                            </table>
+                            {% else %}
+                                <p style="color: red;">{{ error }}</p>
+                            {% endif %}
+                            
+                            </div>
+                    </div>
+                </div>
+                           
+            </div>
+        </div>
+    </section>
+    <!-- End OF Service Section -->
+
+
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+	
+	<!-- core  -->
+    	<!-- core  -->
+        <script src="{% static 'vendors/jquery/jquery-3.4.1.js' %}"></script>
+        <script src="{% static 'vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+    
+        <!-- bootstrap 3 affix -->
+        <script src="{% static 'vendors/bootstrap/bootstrap.affix.js' %}"></script>
+    
+        <!-- Isotope -->
+        <script src="{% static 'vendors/isotope/isotope.pkgd.js' %}"></script>
+    
+        <!-- LeadMark js -->
+        <script src="{% static 'js/leadmark.js' %}"></script>
+</body>
+</html>

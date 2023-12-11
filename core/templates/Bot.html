@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with LeadMark landing page.">
+    <meta name="author" content="Devcrud">
+    <title>CDS MALAWI</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap + LeadMark main styles -->
+	<link rel="stylesheet" href="assets/css/leadmark.css">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+   <!-- page Navigation -->
+   <nav class="navbar custom-navbar navbar-expand-md navbar fixed-top" data-spy="affix" data-offset-top="10">
+       <div class="container">
+           <a class="navbar-brand" href="#">
+               <img src="assets/imgs/logo-removebg-preview.png" alt="">
+           </a>
+           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav ml-auto">                     
+                   <li class="nav-item">
+                       <a class="nav-link" href="index.html">Home</a>
+                   </li>
+                 
+               
+                   <li class="nav-item">
+                       <a class="nav-link" href="#contact">Emegency</a>
+                   </li>
+                   <li class="nav-item">
+                       <a href="Bot.html" class="ml-4 nav-link btn btn-success btn-sm rounded">BOT</a>
+                   </li>
+               </ul>
+           </div>
+       </div>
+   </nav>
+ 
+   <header class="header">
+      <div class="overlay">
+          <!-- <h1 class="subtitle">Cholera:diagnosis & prevention</h1>
+          <h1 class="title">Get Live Data</h1>   -->
+      </div>  
+      <div class="shape">
+          <svg viewBox="0 0 1500 200">
+              <path d="m 0,240 h 1500.4828 v -71.92164 c 0,0 -286.2763,-81.79324 -743.19024,-81.79324 C 300.37862,86.28512 0,168.07836 0,168.07836 Z"/>
+          </svg>
+      </div>  
+      <div class="mouse-icon"><div class="wheel"></div></div>
+  </header>
+   <style>
+      .header {
+          background: url(assets/imgs/osha-jcaho-hipaa-1024x683.jpg);
+          position: relative;
+          height: 100vh;
+          min-height: 500px;
+          background-size: cover;
+          /* overflow: hidden; */
+      }
+  </style>
+  <style>
+   
+
+    #chat-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      max-height: 600px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-image: url('./images/background1.gif');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .header-container {
+     
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 10px;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-container h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .close-button {
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    #chat-wrapper {
+      max-height: 500px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .chat-conversation {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .user-message {
+      justify-content: flex-end;
+    }
+
+    .user-message p {
+      background-color: #00aced;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 0;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .bot-message p {
+      background-color: whitesmoke;
+      color: #000000;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 0;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .send-button {
+     
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    
+  </style>
+
+
+<body>
+  <div id="chat-container" style="width: 700px;">
+    <div class="header-container bg-success">
+      <h2>Helper Bot</h2>
+      <span class="close-button">&#10006;</span>
+    </div>
+    <div id="chat-wrapper" style="height: 300px;"></div>
+    <div class="input-container">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button id="send-button" class="send-button bg-success mx-1" ><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <div class="footer-container">
+      <p style="font-weight: bold; margin-left: 20px;">powered  by<a href="#" style="color: #000000; font-weight: bold;"> ODL Engineers</a></p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Show/hide the chat box
+      $(".close-button").click(function() {
+        $("#chat-container").slideToggle();
+      });
+
+      // Send user message on button click
+      $("#send-button").click(function() {
+        sendMessage();
+      });
+
+      // Send user message on Enter key press
+      $("#user-input").keypress(function(event) {
+        if (event.which === 13) {
+          sendMessage();
+        }
+      });
+
+      function sendMessage() {
+        var userMessage = $("#user-input").val();
+        if (userMessage.trim() !== "") {
+          $("<div class='chat-conversation user-message'></div>")
+            .html("<p>" + userMessage + "</p>")
+            .appendTo("#chat-wrapper");
+
+          // Clear the user input
+          $("#user-input").val("");
+
+          // Scroll to the bottom of the chat
+          $("#chat-wrapper").scrollTop($("#chat-wrapper")[0].scrollHeight);
+
+          // Process the user message
+          processUserMessage(userMessage);
+        }
+      }
+
+      function processUserMessage(userMessage) {
+        var greetingsIntents = {
+          tag: "greetings",
+          patterns: ["hello", "hi", "hey", "good day", "greetings"],
+          responses: ["Hello! How can I assist you today?"]
+        };
+
+        var productInfoIntents = {
+          tag: "product_info",
+          patterns: ["tell me about your farm products", "what are the specifications of your farm products", "do your farm products have any certifications", "what quality standards do your farm products meet"],
+          responses: ["Our farm products are carefully grown and harvested to meet the highest quality standards. They are organic and free from any harmful chemicals or pesticides. We can provide detailed information about each product's specifications, features, certifications, and quality standards. How can I assist you further?"]
+        };
+
+        var orderPlacementIntents = {
+          tag: "order_placement",
+      	  patterns: ["help me with order placement"],
+          responses: ["Sure! I can help you with that. Please provide me with the list of products you want to order and the desired quantities. If you have any specific preferences or requirements, let me know as well. Together, we will ensure a smooth order placement process."]
+        };
+
+        var pricingNegotiationIntents = {
+          tag: "pricing_negotiation",
+          patterns: ["what are your product prices", "can you offer any discounts", "I have a budget, can we negotiate the price"],
+          responses: ["We have competitive pricing for our farm products. The prices may vary based on the product type, quantity, and any ongoing promotions. I can provide you with the current pricing information and assist with any negotiation or discount inquiries. Please let me know your specific requirements."]
+        };
+
+        var inventoryManagementIntents = {
+          tag: "inventory_management",
+          patterns: ["is this product in stock", "what other options do you have", "how soon can I receive the product"],
+          responses: ["Let me check the inventory for you. Please wait a moment. If the product is currently out of stock, I can suggest suitable alternatives or provide you with an estimated restocking or delivery time. Could you please provide me with the product name or code?"]
+        };
+
+        var shippingLogisticsIntents = {
+          tag: "shipping_logistics",
+          patterns: ["can you track my order", "when will my order be delivered", "I have a concern with the shipping process"],
+          responses: ["I can assist you with shipping-related inquiries. To track your order, please provide me with your order number, and I will check the status for you. If you have any specific concerns or questions about the delivery process, feel free to let me know, and I'll address them accordingly."]
+        };
+
+        var customerSupportIntents = {
+          tag: "customer_support",
+          patterns: ["I have a question about my order", "I need help with a complaint", "can you assist with returns or exchanges"],
+          responses: ["I'm here to help! Please provide me with the details of your question, complaint, or any issue you are facing with your order. If you need assistance with returns or exchanges, let me know, and I'll guide you through the process."]
+        };
+
+        var marketInsightsIntents = {
+          tag: "market_insights",
+          patterns: ["what are the current market trends", "who are the potential customers for our farm products", "how can we improve our marketing strategy"],
+          responses: ["Market insights are crucial for making informed decisions. I can provide you with information about current market trends, potential customer segments for specific farm products, and suggestions to improve your marketing strategy. Please let me know your specific inquiries or areas of interest."]
+        };
+
+        var crossUpsellingIntents = {
+          tag: "cross_upselling",
+          patterns: ["do you have any complementary products", "what other products do you recommend", "can you suggest upsell items"],
+          responses: ["Certainly! We have a range of complementary and related farm products that may interest you. Whether you are looking for additional items or exploring upselling opportunities, I can provide you with suitable recommendations. Please let me know your preferences or the product you are interested in."]
+        };
+
+        var troubleshootingIntents = {
+          tag: "troubleshooting",
+          patterns: ["I'm experiencing technical issues", "I need help with the online platform", "how can I resolve a problem with my purchase"],
+          responses: ["I apologize for the inconvenience. To help you troubleshoot the issue, please provide me with more details about the problem you are facing. It could be related to our online platform or your purchase. Once I have more information, I'll provide you with the necessary guidance to resolve the issue."]
+        };
+
+        var goodbyeIntents = {
+          tag: "goodbye",
+          patterns: ["bye", "goodbye", "see you later", "take care"],
+          responses: ["Thank you for reaching out. If you have any more questions in the future, feel free to ask. Goodbye and have a great day!"]
+        };
+
+      // Array of intents
+        var intents = [
+          greetingsIntents,
+          productInfoIntents,
+          orderPlacementIntents,
+          pricingNegotiationIntents,
+          inventoryManagementIntents,
+          shippingLogisticsIntents,
+          customerSupportIntents,
+          marketInsightsIntents,
+          crossUpsellingIntents,
+          troubleshootingIntents,
+          goodbyeIntents
+        ];
+
+        // Find matching intent
+        var matchedIntent = null;
+        for (var i = 0; i < intents.length; i++) {
+          var patterns = intents[i].patterns;
+          for (var j = 0; j < patterns.length; j++) {
+            var pattern = patterns[j];
+            if (userMessage.toLowerCase().includes(pattern)) {
+              matchedIntent = intents[i];
+              break;
+            }
+          }
+          if (matchedIntent) {
+            break;
+          }
+        }
+
+        // Generate bot response based on matched intent
+        var botResponse = "I'm sorry, I couldn't understand your question. Can you please rephrase or provide more details?";
+
+        if (matchedIntent) {
+          var responses = matchedIntent.responses;
+          botResponse = responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        // Display bot response in the chat after a slight delay
+        setTimeout(function() {
+          $("<div class='chat-conversation bot-message'></div>")
+            .html("<p>" + botResponse + "</p>")
+            .appendTo("#chat-wrapper");
+
+          // Scroll to the bottom of the chat
+          $("#chat-wrapper").scrollTop($("#chat-wrapper")[0].scrollHeight);
+        }, 500);
+      }
+    });
+  </script>
+
+
+</div>
+</section>
+
+<!-- core  -->
+<script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+<script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+<!-- bootstrap 3 affix -->
+<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+<!-- Isotope -->
+<script src="assets/vendors/isotope/isotope.pkgd.js"></script>
+
+<!-- LeadMark js -->
+<script src="assets/js/leadmark.js"></script>
+
+</body>
+
+</html>

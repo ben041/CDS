@@ -1,0 +1,377 @@
+{% load static %}
+{% include 'header.html' %}
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+{% include 'nav.html' %}
+
+
+<style>
+    .header {
+        background: url(static/assets/imgs/osha-jcaho-hipaa-1024x683.jpg);
+        position: relative;
+        height: 100vh;
+        min-height: 500px;
+        background-size: cover;
+        /* overflow: hidden; */
+    }
+</style>
+
+
+    <!-- Page Header -->
+    <header class="header">
+        <div class="overlay">
+            <h1 class="subtitle">Cholera:diagnosis & prevention</h1>
+            <h1 class="title">Get Live Data</h1>  
+        </div>  
+        <div class="shape">
+            <svg viewBox="0 0 1500 200">
+                <path d="m 0,240 h 1500.4828 v -71.92164 c 0,0 -286.2763,-81.79324 -743.19024,-81.79324 C 300.37862,86.28512 0,168.07836 0,168.07836 Z"/>
+            </svg>
+        </div>  
+        <div class="mouse-icon"><div class="wheel"></div></div>
+    </header>
+   <style>
+    .cont{
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+   </style>
+    <section  id="service" class="section pt-0">
+        <div class="cont">
+            <h6 class="section-title text-center">Chorela Statistic</h6>
+            <h6 class="section-subtitle text-center mb-5 pb-3">by district</h6>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <small class="text-primary font-weight-bold">Live Data Table</small>
+                            
+                            
+                            <table>
+                                <tr>
+                                  
+                                    <th>District</th>
+                                    <th>Cases</th>
+                                    <th>Deaths</th>
+                                    <th>Cured</th>
+                                    <th>Still Sick</th>
+                                </tr>
+                                {% for statistics in statistics %}
+                                <tr>
+                                
+                                    <td><a href="{% url 'district_d' statistics.id %}" style="text-decoration: none;">{{ statistics.district.name }}</a></td>
+                                    <td>{{ statistics.cases }}</td>
+                                    <td>{{statistics.deaths }}</td>
+                                    <td>{{ statistics.cured }}</td>
+                                    <td>{{ statistics.hospitalised }}</td>
+                                   
+                                </tr>
+                                {% endfor %}
+                              
+                              
+                            </table>
+                            
+                            </div>
+                    </div>
+                </div>
+                           
+            </div>
+        </div>
+    </section>
+    <!-- End OF Service Section -->
+
+
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <section class="cont">
+        <div class="row">
+  
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Cases</h5>
+  
+                <!-- Line Chart -->
+                <div id="lineChart"></div>
+  
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#lineChart"), {
+                      series: [{
+                        name: "national database %",
+                        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+                      }],
+                      chart: {
+                        height: 350,
+                        type: 'line',
+                        zoom: {
+                          enabled: false
+                        }
+                      },
+                      dataLabels: {
+                        enabled: false
+                      },
+                      stroke: {
+                        curve: 'straight'
+                      },
+                      grid: {
+                        row: {
+                          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                        },
+                      },
+                      xaxis: {
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                      }
+                    }).render();
+                  });
+                </script>
+                <!-- End Line Chart -->
+  
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-6 my-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Hotspots</h5>
+  
+                <!-- Column Chart -->
+                <div id="columnChart"></div>
+  
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#columnChart"), {
+                      series: [{
+                        name: 'High',
+                        data: [
+                        {% for statistics in statistics %}
+                        '{{ statistics.cured }}',
+                        {% endfor %}
+                        ]
+                      }, {
+                        name: 'Mid',
+                        data: [
+                        
+                        {% for statistics in statistics %}
+                        '{{ statistics.cases }}',
+                        {% endfor %}
+                        
+                        ]
+                      }, {
+                        name: 'Low',
+                        data: [
+                        
+                        {% for statistics in statistics %}
+                        '{{ statistics.deaths }}',
+                        {% endfor %}
+                        
+                        ]
+                      }],
+                      chart: {
+                        type: 'bar',
+                        height: 350
+                      },
+                      plotOptions: {
+                        bar: {
+                          horizontal: false,
+                          columnWidth: '55%',
+                          endingShape: 'rounded'
+                        },
+                      },
+                      dataLabels: {
+                        enabled: false
+                      },
+                      stroke: {
+                        show: true,
+                        width: 2,
+                        colors: ['transparent']
+                      },
+                      xaxis: {
+                        categories: [
+                        {% for statistics in statistics %}
+                        '{{ statistics.districts }}',
+                       {% endfor %}
+
+                        ],
+                      },
+                      yaxis: {
+                        title: {
+                          text: 'statistics'
+                        }
+                      },
+                      fill: {
+                        opacity: 1
+                      },
+                      tooltip: {
+                        y: {
+                          formatter: function(val) {
+                            return " " + val + " odl data v5"
+                          }
+                        }
+                      }
+                    }).render();
+                  });
+                </script>
+                <!-- End Column Chart -->
+  
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-6 my-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Recovery Rate</h5>
+          
+                <!-- Bar Chart -->
+                <div id="barChart"></div>
+          
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+               
+                    const categories = [
+                      {% for statistics in statistics %}
+                        '{{ statistics.districts }}',
+                      {% endfor %}
+                    ];
+          
+                    new ApexCharts(document.querySelector("#barChart"), {
+                      series: [{
+                        data: [
+                        {% for statistics in statistics %}
+                        '{{ statistics.cured }}',
+                      {% endfor %}
+
+                        ],
+                      }],
+                      chart: {
+                        type: 'bar',
+                        height: 350
+                      },
+                      plotOptions: {
+                        bar: {
+                          borderRadius: 4,
+                          horizontal: true,
+                        }
+                      },
+                      dataLabels: {
+                        enabled: false
+                      },
+                      xaxis: {
+                        categories: categories, // Use the categories array here
+                      }
+                    }).render();
+                  });
+                </script>
+                <!-- End Bar Chart -->
+          
+              </div>
+            </div>
+          </div>
+          
+          
+  
+          
+  
+          
+  
+
+  
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+   
+    <section id="contact" class="section has-img-bg pb-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 my-3">
+                    <h6 class="mb-0">Phone</h6>
+                    <p class="mb-4">+ 265884466926</p>
+
+                    <h6 class="mb-0">Address</h6>
+                    <p class="mb-4">lilongwe</p>
+
+                    <h6 class="mb-0">Email</h6>
+                    <p class="mb-0">info@cdsys.com</p>
+                    <p></p>
+                </div>
+                <div class="col-md-7">
+                    <form>
+                        <h4 class="mb-4">Contact</h4>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control text-white rounded-0 bg-transparent" name="name" placeholder="Name">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <input type="email" class="form-control text-white rounded-0 bg-transparent" name="Email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control text-white rounded-0 bg-transparent" name="subject" placeholder="Subject">
+                            </div>
+                            <div class="form-group col-12">
+                                <textarea name="message" id="" cols="30" rows="4" class="form-control text-white rounded-0 bg-transparent" placeholder="Message"></textarea>
+
+                            </div>
+                            <div class="form-group col-12 mb-0">
+                                <button type="submit" class="btn btn-primary rounded w-md mt-3">Send</button>
+                            </div>                          
+                        </div>                          
+                    </form>
+                </div>
+            </div>
+            <!-- Page Footer -->
+            <footer class="mt-5 py-4 border-top border-secondary">
+                <p class="mb-0 small">&copy; <script>document.write(new Date().getFullYear())</script>, ODL<a href="" target="_blank">ENG.</a>  All rights reserved </p>     
+            </footer>
+            <!-- End of Page Footer -->  
+        </div>
+    </section>
+	
+	<!-- core  -->
+    	<!-- core  -->
+        <script src="{% static 'vendors/jquery/jquery-3.4.1.js' %}"></script>
+        <script src="{% static 'vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+    
+        <!-- bootstrap 3 affix -->
+        <script src="{% static 'vendors/bootstrap/bootstrap.affix.js' %}"></script>
+    
+        <!-- Isotope -->
+        <script src="{% static 'vendors/isotope/isotope.pkgd.js' %}"></script>
+    
+        <!-- LeadMark js -->
+        <script src="{% static 'js/leadmark.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+{% load static %}
+{% include 'header.html' %}
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    {% include 'nav.html' %}
+
+    <style>
+        .header {
+            background: url({% static 'air.jpg' %});
+            position: relative;
+            height: 40vh;
+            min-height: 500px;
+            background-size: cover;
+        }
+    </style>
+
+      <!-- Page Header -->
+      <header class="header">
+        <div class="overlay">
+            <h1 class="subtitle">Cholera:diagnosis & prevention</h1>
+            <h1 class="title">Get Live Data</h1>  
+        </div>  
+        <div class="shape">
+            <svg viewBox="0 0 1500 200">
+                <path d="m 0,240 h 1500.4828 v -71.92164 c 0,0 -286.2763,-81.79324 -743.19024,-81.79324 C 300.37862,86.28512 0,168.07836 0,168.07836 Z"/>
+            </svg>
+        </div>  
+        <div class="mouse-icon"><div class="wheel"></div></div>
+    </header>
+   <style>
+    .cont{
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+   </style>
+
+    <style>
+        .cont {
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+    </style>
+
+    <section id="service" class="section pt-0">
+        <div class="cont">
+            <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4 mb-md-0 my-4">
+                        <div class="card-body">
+                            <center><small class="font-weight-bold">{{district.district}} - hotspots </small></center>
+                            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                            <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+                            <div id="map" style="height: 600px;"></div>
+                            <script>
+                                var malawiCoords = [{{district.district.latitude}}, {{district.district.longitude}}];
+                                var map = L.map('map').setView(malawiCoords, 10);
+                                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                    attribution: '© OpenStreetMap contributors'
+                                }).addTo(map);
+                                var heatData = generateRandomHeatData(500, malawiCoords, 3);
+                                var heatLayer = L.heatLayer(heatData, { radius: 15, maxZoom: 10 }).addTo(map);
+                                function generateRandomHeatData(numPoints, center, intensity) {
+                                    var heatData = [];
+                                    for (var i = 0; i < numPoints; i++) {
+                                        var lat = center[0] + (Math.random() - 0.5) * intensity;
+                                        var lon = center[1] + (Math.random() - 0.5) * intensity;
+                                        heatData.push([lat, lon, Math.random()]);
+                                    }
+                                    return heatData;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    
+               
+        </div>
+        
+        <style>
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            li {
+                margin-bottom: 8px;
+                font-size: 16px;
+            }
+
+            li:before {
+                content: "\2022";
+                color: #007bff;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+            }
+        </style>
+        <div class="col-md-6">
+            <div class="card mb-4 mb-md-0 my-4">
+                <div class="card-body">
+                    <center><small class="font-weight-bold">{{district.district.latitude}};
+                            {{district.district.longitude}}; </small></center>
+                          
+                                    
+                                                    <table>
+                                                        <tr>
+                                                          
+                                                            <th>District</th>
+                                                            <th>Cases</th>
+                                                            <th>Deaths</th>
+                                                            <th>Cured</th>
+                                                            <th>Still Sick</th>
+                                                        </tr>
+                                                       
+                                                        <tr>
+                                                        
+                                                            <td>{{ district.district.name }}</a></td>
+                                                            <td>{{ district.cases }}</td>
+                                                            <td>{{ district.deaths }}</td>
+                                                            <td>{{ district.cured }}</td>
+                                                            <td>{{ district.hospitalised }}</td>
+                                                           
+                                                        </tr>
+                                                       
+                                                      
+                                                      
+                                                    </table>
+                                                    
+                                  
+                </div>
+            </div>
+        </div>
+       
+
+        
+    </section>
+
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+   
+	<!-- core  -->
+    	<!-- core  -->
+        <script src="{% static 'vendors/jquery/jquery-3.4.1.js' %}"></script>
+        <script src="{% static 'vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+    
+        <!-- bootstrap 3 affix -->
+        <script src="{% static 'vendors/bootstrap/bootstrap.affix.js' %}"></script>
+    
+        <!-- Isotope -->
+        <script src="{% static 'vendors/isotope/isotope.pkgd.js' %}"></script>
+    
+        <!-- LeadMark js -->
+        <script src="{% static 'js/leadmark.js' %}"></script>
+</body>
+</html>

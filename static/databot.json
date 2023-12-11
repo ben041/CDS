@@ -1,0 +1,178 @@
+[
+    {
+        "tag": "greetings",
+        "patterns": [
+            "hello",
+            "hi",
+            "hey",
+            "good day",
+            "greetings",
+            "hi there",
+            "hello bot",
+            "hey there",
+            "how are you",
+            "yo"
+        ],
+        "responses": ["Hello! How can I assist you with cholera-related questions today?"]
+    },
+    {
+        "tag": "symptoms",
+        "patterns": [
+            "cholera symptoms",
+            "what are the symptoms of cholera",
+            "signs of cholera",
+            "cholera signs",
+            "cholera manifestations",
+            "cholera warning signs",
+            "how to recognize cholera",
+            "cholera disease symptoms",
+            "cholera infection signs",
+            "cholera health indicators"
+        ],
+        "responses": [
+            "Cholera symptoms typically include severe diarrhea, vomiting, and dehydration. Seek medical help if you suspect cholera."
+        ]
+    },
+    {
+        "tag": "prevention",
+        "patterns": [
+            "how to prevent cholera",
+            "cholera prevention",
+            "cholera hygiene",
+            "cholera safety measures",
+            "avoiding cholera",
+            "cholera prevention tips",
+            "protecting against cholera",
+            "cholera precautions",
+            "staying safe from cholera",
+            "cholera control methods"
+        ],
+        "responses": [
+            "To prevent cholera, practice good hygiene, drink clean water, and maintain proper sanitation. Vaccination is also available in some areas."
+        ]
+    },
+    {
+        "tag": "treatment",
+        "patterns": [
+            "cholera treatment",
+            "how to treat cholera",
+            "cholera medication",
+            "curing cholera",
+            "cholera therapy",
+            "managing cholera",
+            "medical care for cholera",
+            "cholera recovery",
+            "cholera remedy",
+            "cholera medical help"
+        ],
+        "responses": [
+            "Cholera is treated with rehydration therapy (oral rehydration salts) and, in severe cases, antibiotics. Seek medical care immediately if you have cholera symptoms."
+        ]
+    },
+    {
+        "tag": "spread",
+        "patterns": [
+            "how does cholera spread",
+            "cholera transmission",
+            "cholera infection",
+            "cholera contagion",
+            "cholera dissemination",
+            "cholera transfer",
+            "cholera contamination",
+            "cholera propagation",
+            "cholera infection routes",
+            "cholera communication"
+        ],
+        "responses": [
+            "Cholera spreads through contaminated water and food. Poor sanitation and overcrowded areas can contribute to outbreaks."
+        ]
+    },
+    {
+        "tag": "typos",
+        "patterns": [
+            "cholera symptos",
+            "cholera symptomz",
+            "cholera symptomss",
+            "preventin cholera",
+            "cholera treatement",
+            "cholera medicashun",
+            "cholera spred",
+            "cholera contaminashun",
+            "cholera propogashun",
+            "cholera infekshun rutes"
+        ],
+        "responses": ["I think you meant to ask about cholera symptoms, prevention, treatment, spread, or infection routes. Feel free to ask again!"]
+    },
+    {
+        "tag": "causes",
+        "patterns": [
+            "what causes cholera",
+            "cholera origins",
+            "cholera sources",
+            "how cholera starts",
+            "reasons for cholera",
+            "cholera transmission",
+            "cholera bacteria",
+            "cholera agents",
+            "cholera pathogens",
+            "where does cholera come from"
+        ],
+        "responses": [
+            "Cholera is caused by the bacterium Vibrio cholerae. It's typically transmitted through contaminated water and food."
+        ]
+    },
+    {
+        "tag": "vaccine",
+        "patterns": [
+            "is there a cholera vaccine",
+            "cholera vaccination",
+            "vaccine for cholera",
+            "cholera immunization",
+            "preventing cholera with vaccines",
+            "cholera shot",
+            "cholera inoculation",
+            "immunize against cholera",
+            "vaccine availability",
+            "get cholera vaccine"
+        ],
+        "responses": [
+            "Yes, there is a cholera vaccine available. It can be recommended for travelers to areas with cholera outbreaks or for certain high-risk groups. Consult a healthcare professional for more information."
+        ]
+    },
+    {
+        "tag": "outbreaks",
+        "patterns": [
+            "recent cholera outbreaks",
+            "cholera epidemic",
+            "cholera cases",
+            "cholera incidents",
+            "current cholera situation",
+            "cholera in the news",
+            "cholera updates",
+            "latest on cholera",
+            "where is cholera spreading",
+            "cholera hotspots"
+        ],
+        "responses": [
+            "Cholera outbreaks can occur in various regions. For the most up-to-date information on recent cholera outbreaks, please refer to the World Health Organization (WHO) or your local health authority."
+        ]
+    },
+    {
+        "tag": "cleanwater",
+        "patterns": [
+            "importance of clean water",
+            "cholera and clean water",
+            "cholera prevention through water",
+            "clean water for health",
+            "safe drinking water",
+            "water sanitation",
+            "clean water practices",
+            "access to clean water",
+            "waterborne diseases",
+            "cholera and water supply"
+        ],
+        "responses": [
+            "Access to clean water is essential to prevent waterborne diseases like cholera. Safe drinking water and proper sanitation are critical for public health."
+        ]
+    }
+]
